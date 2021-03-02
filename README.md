@@ -23,12 +23,15 @@ The algorithm splits the input dataset into several partitions. Each partition i
 # Future Plans
 - You will notice that there are hooks for changing the data dimensionality. I hope to incorporate >2 dimensions in the future.
 
+# Data
+- The 50 million point Gaia dataset used in the ICS'19 paper is located at the following address: https://rcdata.nau.edu/gowanlock_lab/datasets/ICS19_data/gaia_dr2_ra_dec_50M.txt
+
 # Usage and Example Execution
 To execute the program, you must give the following as input on the command line: The input dataset as a csv (2-D datasets only), epsilon, min. points, the data dimensionality (this will be 2), and the number of partitions to generate from the input dataset.
 
 ./main \<dataset\> \<epsilon\> \<minpts\> \<data dimensionality\> \<partitions\>
   
-Using the dataset in the "datasets" directory of this repository, the following takes the input dataset and sets epsilon=0.01 min. points=4, 2-D, and the data is split into 10 partitions.
+Using the dataset at the link above, the following takes the input dataset and sets epsilon=0.01 min. points=4, 2-D, and the data is split into 10 partitions.
 
 ./main gaia_dr2_ra_dec_50M.txt 0.01 4 2 10
 
