@@ -44,9 +44,9 @@ Each execution will output information to gpu_stats.txt
 
 The output below shows the following for the epsilon=0.01 and epsilon=0.06 executions. The output shows the execution time, dataset, epsilon, min. points, the number of partitions, the number of clusters and the fraction of points that were detected as noise. The parameters will be described in the next section.
 
-20.7339, ../datasets/gaia_dr2_ra_dec_50M.txt, 0.01, 4, 10, 1116232, 0.3627, DENSEBOX/MU/PARCHUNKS/NUMGPU/GPUSTREAMS/PARTITIONMODE/SCHEDULE/DTYPE(float/double): 2, 0.25, 10, 1, 3, 1, 0, float
+20.7339, gaia_dr2_ra_dec_50M.txt, 0.01, 4, 10, 1116232, 0.3627, DENSEBOX/MU/PARCHUNKS/NUMGPU/GPUSTREAMS/PARTITIONMODE/SCHEDULE/DTYPE(float/double): 2, 0.25, 10, 1, 3, 1, 0, float
 
-23.0778, ../datasets/gaia_dr2_ra_dec_50M.txt, 0.06, 4, 10, 9155, 0.0009337, DENSEBOX/MU/PARCHUNKS/NUMGPU/GPUSTREAMS/PARTITIONMODE/SCHEDULE/DTYPE(float/double): 2, 0.25, 10, 1, 3, 1, 0, float
+23.0778, gaia_dr2_ra_dec_50M.txt, 0.06, 4, 10, 9155, 0.0009337, DENSEBOX/MU/PARCHUNKS/NUMGPU/GPUSTREAMS/PARTITIONMODE/SCHEDULE/DTYPE(float/double): 2, 0.25, 10, 1, 3, 1, 0, float
 
 From the above, this yields a range of noise point percentages: 36%-0.09337% corresponding to epsilon=0.01 and 0.06, respectively. These values bracket useful ranges of the fraction of noise points.
 
