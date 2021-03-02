@@ -11,7 +11,7 @@ This material is based upon work supported by the National Science Foundation un
 # Overview
 The code performs DBSCAN on 2-D datasets. As described in the ICS'19 paper above, the algorithm splits the work between the CPU and GPU, where the GPU finds all neighbors within epsilon and the CPU uses these neighbors as input to cluster the data. This gives the irregular instruction flow to the CPU while allowing the GPU to perform the (more) regularized computation.
 
-The algorithm splits the input dataset into several partitions. Each partition is independently clustered. Each partition is processed by a single CPU core, thus exploiting parallelism on the CPU. For example, if you had a 8 core CPU and set the algorithm to concurrently cluster 8 partitions, then all 8 cores could be utilized. 
+The algorithm splits the input dataset into several partitions. Each partition is independently clustered, and partitions are merged at the end to compute the final set of clusters. Each partition is processed by a single CPU core, thus exploiting parallelism on the CPU. For example, if you had a 8 core CPU and set the algorithm to concurrently cluster 8 partitions, then all 8 cores could be utilized. 
 
 
 # Constraints and Testing
@@ -43,25 +43,26 @@ The output below shows the following for the epsilon=0.01 and epsilon=0.06 execu
 
 20.7339, ../datasets/gaia_dr2_ra_dec_50M.txt, 0.01, 4, 10, 1116232, 0.3627, DENSEBOX/MU/PARCHUNKS/NUMGPU/GPUSTREAMS/PARTITIONMODE/SCHEDULE/DTYPE(float/double): 2, 0.25, 10, 1, 3, 1, 0, float
 
+23.0778, ../datasets/gaia_dr2_ra_dec_50M.txt, 0.06, 4, 10, 9155, 0.0009337, DENSEBOX/MU/PARCHUNKS/NUMGPU/GPUSTREAMS/PARTITIONMODE/SCHEDULE/DTYPE(float/double): 2, 0.25, 10, 1, 3, 1, 0, float
 
 From the above, this yields a range of noise point percentages: 36%-0.09337% corresponding to epsilon=0.01 and 0.06, respectively. These values bracket useful ranges of the fraction of noise points.
 
 # Parameters
 - The parameters can be changed in params.h
-- If you are only interested in running the algorithm on a single GPU, you can likely use the default values of the parameters. However you will need to change the parameters if you would like to use multiple GPUs, change the number of cores that concurrently partition the data, and other options.
+- If you are only interested in running the algorithm on a single GPU, you can likely use the default values of the parameters. However you will need to change the parameters if you would like to use multiple GPUs, change the number of cores that concurrently partition the data, and other performance tuning options.
 
 The parameters (default values) that can be changed are described as follows.
-- DTYPE (float): Float or Double. This is the floating point precision of the input dataset. 
+- DTYPE (float): float or double. This is the floating point precision of the input dataset. 
 - BLOCKSIZE (256): This is the CUDA block size of the main GPU kernels. You may change this to tune performance.  
 - NTHREADS (16): This is the number of physical CPU cores. Several parts of the algorithm are parallelized on the CPU and use multiple CPU threads. Set this to the number of physical cores on your platform.
-- DENSEBOXMODE (2): This refers to the dense box optimization in the paper. 0- disable dense box mode on all partitions; 1- enable dense box mode on all partitions; 3- dynamically enable the dense box algorithm based on the data density on each partition.
+- DENSEBOXMODE (2): This refers to the dense box optimization in the paper. 0- disable dense box mode on all partitions; 1- enable dense box mode on all partitions; 2- dynamically enable the dense box algorithm based on the data density on each partition.
 - MU (0.25): The parameter used when using the dynamic dense box mode. 0.25 performed well in the experimental evaluation of the paper.
 - PARCHUNKS (10): The number of partitions that should be concurrently clustered. Do not use more than NTHREADS.
 - NUMGPU (1): The number of GPUs used to compute the epsilon-neighborhoods of all points in each partition.
 - GPUSTREAMS (3): The number of GPU streams for each GPU. Used to overlap computation and communication over PCIe. 3 streams is likely sufficient.
 - PARTITIONMODE (1): The order in which partitions will be processed. 1- default; 2- move partition boundaries to exploit local density minima to reduce the overhead of merging adjacent partitions.
 - SCHEDULE (0): 0- default order of processing partitions; 1- order the partitions to be processed from most work to least work to improve load balancing at the end of the computation.
-- GPUBUFFERSIZE (100000000): GPU result set size for each stream.
+- GPUBUFFERSIZE (100000000): GPU result set size for each stream. If your GPU exceeds memory capacity, you may want to lower this value.
 
 
 
