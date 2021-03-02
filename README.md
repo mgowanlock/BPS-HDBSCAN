@@ -3,7 +3,7 @@ Hybrid Parallel CPU+GPU DBSCAN Algorithm
 
 This algorithm is described in the following paper: Michael Gowanlock (2019) "Hybrid CPU/GPU Clustering in Shared Memory on the Billion Point Scale" *In Proceedings of the International Conference on Supercomputing 2019 (ICS 2019)*, June 26–28, 2019, Phoenix, AZ, USA.
 
-The preprint of the paper can be found at the following address: https://jan.ucc.nau.edu/mg2745/
+The preprint of the paper can be found at the following address: https://jan.ucc.nau.edu/mg2745/discoframe/
 
 # Acknowledgements
 This material is based upon work supported by the National Science Foundation under Grant No. 1849559.
