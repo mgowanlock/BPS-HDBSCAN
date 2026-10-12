@@ -730,7 +730,7 @@ void DetermineErrorTwoClusterResultsBeforeShortCircuit(std::vector<int> * c1, st
 			//the sets have already been presorted.
 			//for each element in set 1, we see if its found in set 2 doing a binary search and count the number of times this occurs
 			int cntIntersection=0;
-			int cntUnion=0;
+			// int cntUnion=0;
 
 			for (int j=0; j<ids_in_cluster1.size();j++)
 			{
@@ -1105,7 +1105,7 @@ void DetermineErrorTwoClusterResults(std::vector<int> * c1, std::vector<int> * c
 			//the sets have already been presorted.
 			//for each element in set 1, we see if its found in set 2 doing a binary search and count the number of times this occurs
 			int cntIntersection=0;
-			int cntUnion=0;
+			// int cntUnion=0;
 
 			for (int j=0; j<ids_in_cluster1.size();j++)
 			{

@@ -30,15 +30,15 @@
 #define GPUNUMDIM 2 //do not change
 #define NUMINDEXEDDIM 2 //do not change
 
-#define NTHREADS 16 //Number of physical cores on the machine
+#define NTHREADS 16 //16 //Number of physical cores on the machine
 
 #define NSEARCHTHREADS 1 //Number of threads for DBSCAN part (1)
 
-#define DENSEBOXMODE 2 //0-OFF, 1-ON, 2-DYNAMIC
+#define DENSEBOXMODE 2 //2 //0-OFF, 1-ON, 2-DYNAMIC
  
 //the number of concurrently executing partitions
 //excludes the GPU batching. Has nested parallelism.
-#define PARCHUNKS 10
+#define PARCHUNKS 10 //10
  
 #define NUMGPU 1
 #define GPUSTREAMS 3 //number of concurrent gpu streams per gpu
@@ -60,7 +60,7 @@
 			//0.5=need half of minpts pts in all denseboxes
 			//2.0=need 2xminpts pts in all denseboxes
 
-#define GPUBUFFERSIZE 100000000 //Buffer size for results in each stream
+#define GPUBUFFERSIZE 200000000 //Buffer size for results in each stream
 
 
 //generates a python file that prints a visualization of the clusters

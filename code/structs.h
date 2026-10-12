@@ -86,7 +86,7 @@ struct keyValDenseBoxStruct{
 		uint64_t linearID;
 		unsigned int pointID;
 		//compare function for linearID
-		bool operator<(const keyValDenseBoxStruct & other) const
+		__host__ __device__ bool operator<(const keyValDenseBoxStruct & other) const
 		{
 		   return linearID < other.linearID;
 		}
@@ -97,7 +97,7 @@ struct DenseBoxPointIDStruct{
 	uint64_t linearID;
 	std::vector<unsigned int> pointIDs;
 	//compare function for linearID
-	bool operator<(const DenseBoxPointIDStruct & other) const
+	__host__ __device__ bool operator<(const DenseBoxPointIDStruct & other) const
 	{
 	   return linearID < other.linearID;
 	}
@@ -135,7 +135,7 @@ struct gridCellLookup{
 unsigned int idx; //idx in the "grid" struct array
 uint64_t gridLinearID; //The linear ID of the grid cell
 //compare function for linearID
-  bool operator<(const gridCellLookup & other) const
+ __host__ __device__ bool operator<(const gridCellLookup & other) const
   {
     return gridLinearID < other.gridLinearID;
   }

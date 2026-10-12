@@ -1,3 +1,7 @@
+# Update Oct. 11, 2026
+
+Fixed compiler warnings and errors related to Thrust and C++ standards. The code has been updated and successfully executes on a platform with an Nvidia RTX 6000 Pro (Compute Capability 12.0), compiled with -std=c++20, using CUDA v. 13.0.2.
+
 # BPS-HDBSCAN
 Hybrid Parallel CPU+GPU DBSCAN Algorithm
 

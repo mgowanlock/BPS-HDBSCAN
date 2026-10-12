@@ -466,8 +466,8 @@ void DBScan::appendMBBByEpsilon(DTYPE * MBB_min, DTYPE * MBB_max, DTYPE eps)
 		//construct an MBB for the point
 		DTYPE MBB_min[2];
 		DTYPE MBB_max[2];
-		DTYPE MBB_min2[2]; //used only if 2 MBBs are required around the longitudinal equator 
-		DTYPE MBB_max2[2]; //(between 0 and 360 degrees)
+		// DTYPE MBB_min2[2]; //used only if 2 MBBs are required around the longitudinal equator 
+		// DTYPE MBB_max2[2]; //(between 0 and 360 degrees)
 
 
 
@@ -513,8 +513,8 @@ void DBScan::appendMBBByEpsilon(DTYPE * MBB_min, DTYPE * MBB_max, DTYPE eps)
 		//construct an MBB for the point
 		DTYPE MBB_min[2];
 		DTYPE MBB_max[2];
-		DTYPE MBB_min2[2]; //used only if 2 MBBs are required around the longitudinal equator 
-		DTYPE MBB_max2[2]; //(between 0 and 360 degrees)
+		// DTYPE MBB_min2[2]; //used only if 2 MBBs are required around the longitudinal equator 
+		// DTYPE MBB_max2[2]; //(between 0 and 360 degrees)
 
 
 		
@@ -568,6 +568,8 @@ void DBScan::appendMBBByEpsilon(DTYPE * MBB_min, DTYPE * MBB_max, DTYPE eps)
 			}
 		}
 
+		return 0;
+
 	}
 
 
@@ -617,6 +619,7 @@ void DBScan::appendMBBByEpsilon(DTYPE * MBB_min, DTYPE * MBB_max, DTYPE eps)
 		
 		} //end of outer for loop
 
+		return 0;
 	}
 
 
@@ -695,7 +698,7 @@ void DBScan::appendMBBByEpsilon(DTYPE * MBB_min, DTYPE * MBB_max, DTYPE eps)
 		output<<endl;
 
 		char alphabet[26] = {'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'};
-		int colorcnt=0;
+		// int colorcnt=0;
 
 		int pntcnt=0;
 		int ptsincluster=0;
@@ -1006,7 +1009,7 @@ void DBScan::appendMBBByEpsilon(DTYPE * MBB_min, DTYPE * MBB_max, DTYPE eps)
 			//the sets have already been presorted.
 			//for each element in set 1, we see if its found in set 2 doing a binary search and count the number of times this occurs
 			int cntIntersection=0;
-			int cntUnion=0;
+			// int cntUnion=0;
 
 			for (int j=0; j<ids_in_cluster1.size();j++)
 			{
